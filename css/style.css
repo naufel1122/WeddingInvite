@@ -9840,5 +9840,19 @@ a.text-dark:hover, a.text-dark:focus {
     width: 310px;
     height:310px;
   }
+
+
 }
 
+@media (max-width:456px) {
+  .contact{
+    
+    font-size:3.5vw ;
+  }
+}
+@media (max-width:280px) {
+  .contact{
+    
+    font-size:4vw ;
+  }
+}
