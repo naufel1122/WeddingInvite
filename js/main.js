@@ -51,39 +51,46 @@
 
     
     // Scroll to Bottom
+    // $(window).scroll(function () {
+    //     if ($(this).scrollTop() > 100) {
+    //         $('.scroll-to-bottom').fadeOut('slow');
+    //     } else {
+    //         $('.scroll-to-bottom').fadeIn('slow');
+    //     }
+    // });
+
+
+    
+
+    var scrollToBottomClicked = false;
+
+    $('.scroll-to-bottom').click(function () {
+        if (!scrollToBottomClicked && $(window).scrollTop() === 0) {
+            scrollToBottomClicked = true;
+    
+            // Scroll to the about section only if the user is at the top
+            $('html, body').animate({scrollTop: $('#about').offset().top}, 1500, 'easeInOutExpo', function () {
+                // Callback function to hide the icon after scrolling is complete
+                $('.scroll-to-bottom').fadeOut('slow');
+            });
+        }
+        return false;
+    });
+    
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.scroll-to-bottom').fadeOut('slow');
-        } else {
+        if (!scrollToBottomClicked && $(this).scrollTop() === 0) {
             $('.scroll-to-bottom').fadeIn('slow');
+        } else {
+            $('.scroll-to-bottom').fadeOut('slow');
+        }
+    
+        // Reset the flag when the user scrolls to the top
+        if ($(this).scrollTop() === 0) {
+            scrollToBottomClicked = false;
         }
     });
-
-
     
-
-    // var scrollToBottomClicked = false;
-
-    // $('.scroll-to-bottom').click(function () {
-    //     if (!scrollToBottomClicked && $(window).scrollTop() === 0) {
-    //         scrollToBottomClicked = true;
     
-    //         // Scroll to the about section only if the user is at the top
-    //         $('html, body').animate({scrollTop: $('#about').offset().top}, 1500, 'easeInOutExpo', function () {
-    //             // Callback function to hide the icon after scrolling is complete
-    //             $('.scroll-to-bottom').fadeOut('slow');
-    //         });
-    //     }
-    //     return false;
-    // });
-    
-    // $(window).scroll(function () {
-    //     if (!scrollToBottomClicked && $(this).scrollTop() < $(document).height() - $(window).height() - 200) {
-    //         $('.scroll-to-bottom').fadeIn('slow');
-    //     } else {
-    //         $('.scroll-to-bottom').fadeOut('slow');
-    //     }
-    // });
     
 
 
